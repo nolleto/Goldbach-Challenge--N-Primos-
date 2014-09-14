@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html ng-app="app">
+	<head>		
+		<meta charset="utf-8">
+		<title>Números Primos</title>
+		<link rel="stylesheet" href="css/default.css">		
+
+		<script src="js/libs/angular.min.js"></script>
+		<script src="js/libs/jquery-2.1.1.min.js"></script>		
+
+		<script src="js/main.js"></script> 
+
+	</head>
+
+	<body ng-controller="MainController as main">		
+		<input type="number" ng-model="main.maxNumber" ng-value="main.maxNumber" placeholder="max number">
+		<input type="button" value="Do It" ng-click="main.doIt()" ng-disabled="main.executing()">
+		<input type="button" value="Do It BETTER... or not" ng-click="main.doItBetter()" ng-disabled="main.executing()">
+		<input type="button" name="" value="Test" ng-click="main.test()">
+		<input type="button" name="" value="Clear =)" ng-click="main.clear()">
+
+		<p>Iterações: {{main.iterations}} - Tempo: {{main.time}}(ms)</p>
+
+		<table class="table" ng-show="main.logs.length">
+			<thead>
+				<tr>
+					<th>Label</th>
+					<th>The chose one</th>
+					<th>Times</th>
+					<th>Delay(ms)</th>
+					<th>Iterations</th>
+					<th>Position</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="(key, log) in main.logs">
+					<td>{{log.label}}</td>
+					<td>{{log.number}}</td>
+					<td>{{log.occurrences}}</td>
+					<td>{{log.time}}</td>
+					<td>{{log.iterations}}</td>
+					<td>{{log.number/log.numberUsed}}</td>
+				</tr>
+			</tbody>
+		</table>
+	</body>
+</html>
